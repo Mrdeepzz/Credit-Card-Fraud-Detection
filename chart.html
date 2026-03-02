@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Credit card fraud detection </title>
+    <style>
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+.form{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+.form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+ h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    color: #efeeee;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+.header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width:100%;
+        height: 300px;
+        position:relative;
+    }
+    .menu-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 50px;
+    }
+    .menu {
+        text-decoration: none;
+        color: rgb(7, 7, 7);
+        background-color: rgb(209, 179, 179);
+        padding: 25px;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+        .menu:hover {
+        background-color: rgb(203, 207, 121);
+        color: black;
+        padding: 30px;
+    }
+        .login-container {
+            margin-top: 50px;
+        }
+        button{
+            margin-top: 50px;
+            align-items: center;
+            background: #121111;
+            display: block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 2px solid #f0eded;
+        }
+        button:hover {
+        box-shadow: 0 2px 0 #efeeee, 0 2px 0px 2px #08f453;
+        }
+         button:active {
+         top: 4px;
+         padding-bottom: 0px;
+         box-shadow: 0 1px 0 #000;
+        }
+        button {
+         position: relative;
+         float: left;
+         font: normal 22px/25px "Patrick Hand", sans-serif;
+         margin-right: 10px;
+         text-transform: uppercase;
+         color: #fbfcfb;
+         text-decoration: none;
+         padding-bottom: 3px;
+         border-radius: 5px;
+         box-shadow: 0 2px 0 #000;
+         transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+        }
+
+     </style>
+  </head>
+  
+    
+  <h3>Chart:</h3>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load("current", {packages:["corechart"]});
+              google.charts.setOnLoadCallback(drawChart);
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['class', 'Hours per Day'],
+                  ['Good',     60],
+                 
+                  ['Farud',    40],
+            
+                ]);
+        
+                var options = {
+                  title: '',
+                  is3D: true,
+                };
+        
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+              }
+            
+            </script>
+          <body>
+            
+          <center>  <div id="piechart_3d" style="width: 900px; height: 500px; "></div></center>
+          
+
+          <button type="submit" onclick="validate()"> Performance analysis</button>
+
+          <script>
+            function validate() {
+                
+                    window.open('/performance','_self');
+            }
+
+          </script>
+           
+          </body>
+        </div>
+      </div>
+    </section>
+
+   </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+            * {
+        margin: 0px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        h1{
+            color: ghostwhite;
+        }
+        .menu {
+            text-decoration: none;
+            color: rgb(12, 12, 12);
+            background-color: rgb(228, 152, 229);
+            padding: 25px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .menu:hover {
+            background-color: aqua;
+            color: black;
+            padding: 30px;
+        }
+        #searchBar {
+            color: gray;
+            background-color: rgb(203, 249, 204);
+            height: 50px;
+            width: 500px;
+            border-radius: 25px;
+            padding-left: 25px;
+            font-size: 18px;
+            position: center;
+        }
+        body {
+            background-image: url("../static/creditcard.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Sedan SC", serif;
+        }
+        .text-box{
+            color: #fefefe; 
+            position: centre;
+            bottom: 8%;
+        }
+        .text-box p {
+            font-size: 50px;
+            font-weight: 600;
+        }
+        .text-box h2{
+            font-size: 190px;
+            line-height: 160px;
+            margin-left: 30px;
+            color: transparent;
+            -webkit-text-stroke: 1px #fff;
+            background: url(static/home,png.jpg);
+            -webkit-background-clip: text;
+            background-position: 0 0;
+            animation: back 4s linear infinite;
+        }
+        @keyframes back {
+            100%{
+                background-position: 200px 0;
+            }
+        }
+        .text-box h3{
+            font-size: 40px;
+            font-weight: 500;
+            margin-left: 70px;
+        }
+        footer {
+                 background-color: #eee2e2;
+                 color: #050505;
+                 font-size:larger;
+                 text-align: center;
+                 padding: 20px;
+                 position: fixed;
+                 bottom: 0;
+                 width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <h1>Home page</h1>
+    
+    </nav>
+    <div style="display: flex; align-items: center;">
+    <input id="searchBar" type="text" placeholder="Search something..."/>
+    <img src="../static/search1.png"
+      width="40px" 
+      height="40px"
+      style="margin-left: 10px; cursor: pointer;"
+      onclick="search()"
+      />
+    </div>
+    <div>
+        <nav>
+                <br/> <br/><br/>
+               <a class ="menu" href="/">home</a>
+               
+               <a class ="menu" href="/login">login</a>
+        </nav>
+    </div>
+    </div>
+    <div class="text-box">
+       <p> Credit</p>
+       <h2> card</h2>
+       <h3>Fraud Detection</h3>
+    </div>
+    <script>
+        document
+            .getElementById("searchBar")
+            .addEventListener("keypress",function(e) {
+               // alert (e.key);
+               if(e.key == "Enter"){
+                //alert("clicked enter");
+                search();
+               }
+            });
+        function search(){
+           // console.log("connected!");
+           // alert("connected!")
+           var searchInp = document.getElementById("searchBar").value;
+           if(searchInp == ""){
+            alert("type anything");
+           }else{
+            var searchUrl = "https://www.google.com/search?q="+searchInp;
+            //alert(searchUrl);
+            window.open(searchUrl,"_blank");
+        }
+    }
+    </script>
+    <footer>
+        <p>&copy; 2024 Our Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

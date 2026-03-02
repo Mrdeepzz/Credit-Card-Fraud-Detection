@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prediction</title>
+    <style>
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+    padding: 10px;
+}
+.background{
+    width: 830px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+.container{
+    height: 700px;
+    width: 800px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 35px 35px;
+    color: #efeeee;
+    align-items:end;
+    flex-direction: column;
+}
+
+
+.container h1{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align:center;
+}
+h4{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align:center;
+}
+.header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width:100%;
+        height: 300px;
+        position:relative;
+    }
+    .menu-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 50px;
+    }
+    .menu {
+        text-decoration: none;
+        color: rgb(7, 7, 7);
+        background-color: rgb(209, 179, 179);
+        padding: 25px;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+        .menu:hover {
+        background-color: rgb(203, 207, 121);
+        color: black;
+        padding: 30px;
+    }
+        
+        button{
+            margin-top: 50px;
+            align-items: center;
+            background: #121111;
+            display: block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 2px solid #f0eded;
+            
+        }
+        button:hover:active {
+        box-shadow: 0 2px 0 #efeeee, 0 2px 0px 2px #08f414;
+        }
+         
+        button {
+         position:absolute;
+         float: left;
+         font: normal 22px/25px "Patrick Hand", sans-serif;
+         margin-right: 10px;
+         text-transform: uppercase;
+         color: #fbfaf9;
+         text-decoration: none;
+         padding-bottom: 3px;
+         border-radius: 5px;
+         box-shadow: 0 2px 0 #000;
+         transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+         
+        }
+        .container form .user-details{
+            display: flex;
+            flex-wrap:wrap ;
+            justify-content: space-between;
+        }
+        form .user-details .controls{
+            margin: 10px 0 8px 0;
+            width: calc(100% / 2 - 20px);
+            font-size: 17px;
+        }
+        .user-details .controls select{
+            height: 30px;
+            width: 100%;
+            outline: none;
+            border-radius: 5px;
+        }
+        .user-details .controls input{
+            height: 30px;
+            width: 100%;
+            outline: none;
+            border-radius:5px ;
+        }
+</style>
+    
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class = "header">
+     <div class="menu-container">
+        <a class = "menu" href = "/"> Home </a>
+        <a class = "menu" href = "/login"> Login </a>
+        <a class = "menu" href = "/chart"> Chart </a>
+     </div>
+    </div>
+    
+        <div class="container">
+            <form action="{{ url_for('predict')}}"method="post">
+                <h1>Credit card details:</h1>
+         <div class="user-details">
+            <div class="controls">
+             <b> Credit_Usage: </b>
+              <input type="text" name="credit_usage" placeholder="credit_usage" required="required" >
+             </div>
+               
+             <div class="controls">
+              <b>Credit_History:</b>
+               <select   type="text"  name="credit_history" required="required" placeholder="credit_history" >
+                    <option value="1">Critical/Other Existing Credit</option>
+                    <option value="2">Existing Paid</option>
+                    <option value="3">Delayed Previously</option>
+                    <option value="4">No Credits/All Paid</option>
+                    <option value="5">All Paid</option>
+                </select> 
+             </div> 
+             
+             <div class="controls">
+               <b> purpose:  </b>
+                <select   type="text"  name="purpose" required="required" placeholder="purpose" >
+                     <option value="1">Radio/tv</option>
+                     <option value="2">Education</option>
+                     <option value="3">Furniture/Equipment</option>
+                     <option value="4">New Car</option>
+                     <option value="5">Used car</option>
+                     <option value="6"> Business </option>
+                     <option value="7"> Domestic appliance</option>
+                     <option value="8"> Repairs </option>
+                     <option value="9"> Other</option>
+                     <option value="10"> Retraining </option>
+                </select> 
+             </div>
+            
+              <div class="controls">
+                  <b> Current_Balance:</b>
+                  <input type="text" name=" current_balance" placeholder="current_balance" required="required">
+                 </div>
+                   
+                <div class="controls">
+                    <b>Average_Credit_Balance :</b>    
+                    <select   type="text"  name="Average_Credit_Balance " required="required" placeholder="Average_Credit_Balance" >
+                    <option value="1">No Known Savings</option>
+                    <option value="2"><100 </option>
+                    <option value="3">500<=X<1000</option>
+                    <option value="4">>=1000</option>
+                    <option value="5">100<=X<500</option>
+                    </select> 
+                </div> 
+                   
+                <div class="controls">
+                 <b>personal_status :</b>  
+                     <select   type="text"  name="personal_status " required="required" placeholder="personal_status">
+                          <option value="1">male single</option>
+                          <option value="2">female div/dep/mar</option>
+                          <option value="3">male div/sep</option>
+                          <option value="4">male mar/wid</option>
+                                
+                     </select> 
+                </div> 
+                    
+                <div class="controls">
+                      <b>other_parties :</b>    
+                        <select   type="text"  name="other_parties " required="required" placeholder="other_parties" >
+                          <option value="1">None</option>
+                          <option value="2">Guarantor</option>
+                          <option value="3">Co Applicant</option>
+                        </select> 
+                </div>
+                    
+                <div class="controls">
+                       <b>property_magnitude :</b>   
+                          <select   type="text"  name="property_magnitude " required="required" placeholder="property_magnitude" >
+                              <option value="1">Real Estate</option>
+                              <option value="2">Life Insurance</option> 
+                              <option value="3">No Known Property</option>
+                              <option value="4">Car</option>      
+                           </select> 
+                 </div> 
+                      	   
+                <div class="controls">
+                        <b> Age: </b>
+                        <input type="text" name="age" placeholder="age"  required="required" ></select>
+                </div> 
+                      
+               <div class="controls">
+                 <b>Other_Payment_Plans :</b>  
+                     <select type="text"  name="Other_Payment_Plans " required="required" placeholder="Other_Payment_Plans">
+                       <option value="1">none</option>
+                        <option value="2">bank</option>
+                         <option value="3">stores</option>
+                     </select>
+                 </div> 
+                   
+                <div class="controls">
+                      <b>Housing :</b>   
+                         <select   type="text"  name="Housing " required="required" placeholder="Housing>
+                          <option value="1">own</option>
+                          <option value="2">for free</option>
+                          <option value="3">rent</option>
+                      </select>    
+                 </div> 
+                    
+                <div class="controls">
+                      <b>job :</b>    
+                         <select   type="text"  name="job " required="required" placeholder="Job">
+                            <option value="1">skilled</option>
+                            <option value="2">unskilled resident</option>
+                            <option value="3">high qualif/self emp/mgmt</option>
+                            <option value="4">unemp/unskilled non res</option>
+                        </select> 
+                 </div> 
+                      
+                <div class="controls">
+                       <b> num_dependents: </b>
+                       <input type="text" name="num_dependents" placeholder="num_dependents(1 TO 2)"  required="required" >
+                </div>
+                   
+                <div class="controls">
+                    <b>foreign_worker :</b>   
+                        <select  type="text"  name="foreign_worker " required="required" placeholder="foreign_worker" >
+                             <option value="1">yes</option>
+                              <option value="2">no</option>
+                        </select>
+                         
+                 </div> 
+                 <div>
+                    <h4> Prediction is:{{prediction_text}}</h4>
+                   </div>
+                 
+            </div>  
+           <centre> <button type="submit" >Predict </button>   </centre>
+         </form>
+         </div>
+        
+   
+</body>
+</html>

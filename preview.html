@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+    <style>
+        button{
+            margin-top: 50px;
+            align-items: center;
+            background: #121111;
+            display: block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 2px solid #f0eded;
+        }
+        button:hover {
+        box-shadow: 0 2px 0 #efeeee, 0 2px 0px 2px #5af20e;
+        }
+         button:active {
+         top: 4px;
+         padding-bottom: 0px;
+         box-shadow: 0 1px 0 #000;
+        }
+        button {
+         position: relative;
+         
+         font: normal 22px/25px "Patrick Hand", sans-serif;
+         margin-right: 10px;
+         text-transform: uppercase;
+         color: #eff3ee;
+         text-decoration: none;
+         padding-bottom: 3px;
+         border-radius: 5px;
+         box-shadow: 0 2px 0 #ededed;
+         transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1> Preview Dataset:</h1>
+        <br/> <br/>
+    <button type="submit" onclick="predict()"> Click to predict</button>
+    <br/> <br/>
+    <div> {{data.to_html(classes="table striped",na_rep="-") | safe}}  </div>
+    
+    </center>
+    <script>
+        function predict() {
+            window.open("/prediction","_self");
+        }
+    </script>
+</body>
+</html>
